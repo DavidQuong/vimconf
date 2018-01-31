@@ -18,8 +18,14 @@ set autoread
 set hidden
 
 set number
+set relativenumber
 
 set history=200
+
+" Disable backup
+set nobackup
+set nowb
+set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User Interface
@@ -36,6 +42,9 @@ set hlsearch
 
 " Remove left and right scroll bars
 set guioptions=
+
+" Ignore line numbers when highlighting text
+set mouse+=a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text Formatting
@@ -58,6 +67,13 @@ set shiftwidth=2
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Hotkeys
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Copy and paste
+vmap <C-c> "+y
+map <C-v> "+p
 
 map <S-m> :noh<ENTER>
 
@@ -87,3 +103,15 @@ let g:lightline = {
   \ }
 
 set noshowmode
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic Configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
